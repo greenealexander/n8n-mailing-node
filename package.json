@@ -1,0 +1,61 @@
+{
+	"name": "n8n-mailing-node",
+	"version": "0.1.0",
+	"description": "",
+	"keywords": [
+		"n8n-community-node-package"
+	],
+	"license": "MIT",
+	"homepage": "",
+	"author": {
+		"name": "Alexander Greene",
+		"email": "greenealexander036@gmail.com"
+	},
+	"main": "index.js",
+	"scripts": {
+		"build": "tsc && gulp build:icons",
+		"dev": "tsc --watch",
+		"format": "prettier nodes credentials --write",
+		"lint": "tslint -p tsconfig.json -c tslint.json && eslint nodes credentials package.json",
+		"lintfix": "tslint --fix -p tsconfig.json -c tslint.json && eslint nodes credentials package.json --fix",
+		"prepublishOnly": "npm run build && npm run lint -c .eslintrc.prepublish.js nodes credentials package.json"
+	},
+	"files": [
+		"dist"
+	],
+	"n8n": {
+		"n8nNodesApiVersion": 1,
+		"credentials": [
+			"dist/credentials/MailingNodeCredentialsApi.credentials.js"
+		],
+		"nodes": [
+			"dist/nodes/MailingNode/MailingNode.node.js"
+		]
+	},
+	"devDependencies": {
+		"@types/express": "^4.17.6",
+		"@types/node": "^18.7.23",
+		"@types/request-promise-native": "~1.0.15",
+		"@typescript-eslint/parser": "^5.29.0",
+		"eslint-plugin-n8n-nodes-base": "^1.5.4",
+		"gulp": "^4.0.2",
+		"mailing": "^0.8.2",
+		"n8n": "^0.196.0",
+		"n8n-core": "^0.125.0",
+		"n8n-workflow": "^0.107.0",
+		"prettier": "^2.7.1",
+		"tslint": "^6.1.2",
+		"typescript": "~4.6.0"
+	},
+	"dependencies": {
+		"jsdom": "^20.0.0",
+		"mailing-core": "^0.8.2",
+		"mjml-react": "^2.0.8",
+		"next": "^12.3.1",
+		"node-fetch": "2.6.7",
+		"nodemailer": "^6.8.0",
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0",
+		"uglify-js": "^3.17.2"
+	}
+}
